@@ -166,3 +166,34 @@
     def stringToNumber(s: String): Int =
      s.toIntOption.getOrElse(0)
 
+// palindrom np. kajak 
+
+   def isPalindrome(s: String): Boolean =
+     s.toLowerCase == s.toLowerCase.reverse
+
+// inicjaly Adam Kupa -> A.K
+    def abbrevName(name: String): String =
+      val s"$x $y" = name.toUpperCase
+      s"${x.head}.${y.head}"
+
+// rok przestępny
+    def isLeap(year: Int): Boolean = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
+
+// suma kwadratów liczb z listy
+    def squareSum(xs: List[Int]): Int = xs.fold(0)((a,b) => a+b*b)
+
+// srednia
+    def getAverage(marks: List[Int]): Int = marks.sum / marks.length
+
+// dzielniki liczby 
+    def divisors(n: Int): Int = (1 to n).count(n % _ == 0)
+
+// czy string jest z tylko wielkich liter
+    def isUpperCase(s: String): Boolean = s.forall(!_.isLower)
+
+// taka sama liczba X i O w liscie -> true
+    def xo(str: String): Boolean =
+        str.count(_.toLower == 'x') == str.count(_.toLower == 'o')
+
+
+   
