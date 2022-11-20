@@ -17,6 +17,9 @@
 
     println(slovo.map(z => countPoints(z)).sum)
 
+// odwrotny numer
+    def opposite(number: Double): Double = -number
+
 // karta kredytowa - cztery ostatnie cyfry odkryte
     def maskify(strs: String): String = 
     val lastFour = strs.toList.takeRight(4).mkString
@@ -108,4 +111,58 @@
     def removeEveryOther[T](list: List[T]): List[T] =
     list.zipWithIndex.collect { case (x, i) if i%2==0 => x }
     
-// 
+// każde słowo z wielkiej litery 
+    extension (s: String) def toJadenCase = s.toLowerCase.split(' ').map(_.capitalize).mkString(" ")
+
+// uporządkuj liczby malejąco 42145 -> 54421
+    def descendingOrder(n: Int): Int =
+        n.toString.sorted.reverse.toInt
+
+// odliczanie liczby; input: 3 -> out: [1,2,3]
+    def monkeyCount(n: Int): Array[Int] = Array.range(1, n + 1)
+
+// dodawanie binarne
+    def addBinary(a: Int, b: Int): String = {
+      (a + b).toBinaryString
+    }
+
+// liczenie samoglosek
+    def getCount(inputStr: String): Int = {
+        val vowels = Set('a', 'e', 'i', 'o', 'u')
+        inputStr.filter(vowels.contains).length
+   }
+
+// odwroc slowo (tylko litery)
+      def reverseLetter(str: String): String = {
+        str.replaceAll("[^A-Za-z]|_", "").reverse
+      }
+
+// liczenie owiec 
+     def countingSheep(num: Int): String = {
+          (1 to num).map(x => s"$x sheep...").mkString
+        }
+
+// sprawdzanie zawartosci tabeli
+    def check(seq:List[Any], elem: Any) = seq.contains(elem)
+
+// liczba do kwadratu
+    def square(n: Int): Int = n * n
+
+// silnia 
+      def !(n: Int): BigInt = {
+        def factHelper(num: Int, acc: BigInt = 1): BigInt = {
+          if (num <= 1) return acc
+          else factHelper(num - 1, acc * num)
+        }
+        factHelper(n)
+      }
+
+// usuń pierwszy i ostatni znak
+      def removeChars(s: String): String = {
+        s.tail.init
+      }
+
+// convert string to int
+    def stringToNumber(s: String): Int =
+     s.toIntOption.getOrElse(0)
+
