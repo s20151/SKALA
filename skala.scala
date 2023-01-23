@@ -195,5 +195,33 @@
     def xo(str: String): Boolean =
         str.count(_.toLower == 'x') == str.count(_.toLower == 'o')
 
+// 2 ZADANIE
+   val dane = List(
+  ("2021-01-04",-137.76),
+ ...
+) 
 
-   
+def ile(o: List[(String, Double)]): Double = {
+  o.filter(x => x._1.charAt(5) == '0' && x._1.charAt(6) == '1').unzip._2.foldLeft(0.0)(_ + _)
+}
+
+println("(Zadanie 2) Obroty w styczniu: " + ile(dane))
+
+// --------------------------------------------------------
+// 1 ZADANIE + BONUS
+val mapa = Map(1 -> 3, 2 -> 2, 4 -> 1)
+val listaLiczb = List(1, 2, 1, 2, 4, 1)
+val drugaListaLiczb = List(1, 2, 1, 2, 4, 1, 4)
+val listaStringow = List('a', 'x', 'a', 'c', 'x' ,'x')
+
+def zgodne[T](l: List[T], m: Map[T, Int]): Boolean = {
+  l.groupBy(l => l).map(t => (t._1, t._2.length)) == m
+}
+
+def zlicz[T](l: List[T]): Map[T, Int] = {
+  l.groupBy(l => l).map(t => (t._1, t._2.length))
+}
+
+println("(Zadanie 1) zgodneTrueCase: " + zgodne(listaLiczb, mapa)) // true
+println("(Zadanie 1) zgodneFalseCase: " + zgodne(drugaListaLiczb, mapa)) // false
+println("(Zadanie 1 BONUS) zliczZnaki: " + zlicz(listaStringow))
